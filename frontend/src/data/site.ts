@@ -59,6 +59,7 @@ export type SubpageCategoryCard = {
   detail: string;
   count: string;
   accent: string;
+  filters?: readonly string[];
 };
 
 export type SubpageTableRow = {
@@ -73,6 +74,19 @@ export type SubpageTableRow = {
 export type ResourceLink = {
   label: string;
   href: string;
+};
+
+export const arxivReleaseDates: Record<string, string> = {
+  "2507.22003": "Jul 29, 2025",
+  "2602.22144": "Feb 25, 2026",
+  "2603.13366": "Mar 9, 2026",
+  "2603.25077": "Mar 26, 2026",
+  "2603.27201": "Mar 28, 2026",
+  "2603.29405": "Mar 31, 2026",
+  "2604.01840": "Apr 2, 2026",
+  "2604.20696": "Apr 22, 2026",
+  "2605.25377": "May 25, 2026",
+  "2606.03937": "Jun 2, 2026",
 };
 
 export type SideListCard = {
@@ -728,37 +742,37 @@ export const subpageConfigs = {
       {
         title: "Image QA",
         detail: "Datasets and benchmarks for image-grounded question answering.",
-        count: "24 datasets",
+        count: "1 entry",
         accent: "green",
       },
       {
-        title: "Video QA",
-        detail: "Resources for temporal hallucination evaluation.",
-        count: "12 datasets",
+        title: "Object Hallucination",
+        detail: "Object-level probes for visual grounding failures.",
+        count: "1 entry",
         accent: "blue",
       },
       {
-        title: "Embodied",
-        detail: "Benchmarks for egocentric and interactive settings.",
-        count: "8 datasets",
+        title: "Evaluation Suite",
+        detail: "Multi-task evaluation suites with hallucination subsets.",
+        count: "1 entry",
         accent: "orange",
       },
       {
-        title: "Chart & OCR",
-        detail: "Datasets with tables, charts, OCR, and grounded evidence.",
-        count: "18 datasets",
+        title: "Captioning",
+        detail: "Captioning metrics and benchmark setups.",
+        count: "1 entry",
         accent: "violet",
       },
       {
-        title: "Open slots",
-        detail: "Room for new evaluation suites and task-specific notes.",
-        count: "16 slots",
+        title: "Multitask",
+        detail: "Hallucination evaluation across multiple task settings.",
+        count: "1 entry",
         accent: "pink",
       },
     ] satisfies SubpageCategoryCard[],
     sectionTitle: "Dataset Categories",
-    tableTitle: "Popular Benchmarks",
-    tableColumns: ["Benchmark", "Focus", "Modality", "Venue (Year)", "Coverage", "Resources"],
+    tableTitle: "Curated Benchmarks",
+    tableColumns: ["Benchmark", "Focus", "Modality", "Venue / First Post", "Coverage", "Resources"],
     tableRows: [
       {
         name: "HallusionBench",
@@ -884,13 +898,14 @@ export const subpageConfigs = {
       {
         title: "Composite Scores",
         detail: "Combined scorecards for side-by-side evaluation.",
-        count: "7 metrics",
+        count: "1 entry",
         accent: "pink",
+        filters: ["Composite Score"],
       },
     ] satisfies SubpageCategoryCard[],
     sectionTitle: "Metric Categories",
-    tableTitle: "Popular Metrics",
-    tableColumns: ["Metric", "Type", "Modality", "Venue (Year)", "Benchmarks", "Resources"],
+    tableTitle: "Curated Metrics",
+    tableColumns: ["Metric", "Type", "Modality", "Venue / First Post", "Coverage", "Resources"],
     tableRows: [
       {
         name: "CHAIR",
@@ -972,39 +987,51 @@ export const subpageConfigs = {
     ],
     categories: [
       {
-        title: "Decoding-time",
-        detail: "Sampling control, reranking, and constrained decoding approaches.",
-        count: "14 methods",
+        title: "Training-time",
+        detail: "Visual instruction tuning and perception-grounded reinforcement learning.",
+        count: "4 entries",
         accent: "pink",
-      },
-      {
-        title: "Verification-based",
-        detail: "Self-check, external check, and revise-after-draft methods.",
-        count: "11 methods",
-        accent: "violet",
+        filters: ["Fine-tuning", "Perception-grounded RL"],
       },
       {
         title: "Activation Editing",
         detail: "Representation editing and sparse steering methods.",
-        count: "8 methods",
+        count: "2 entries",
+        accent: "violet",
+        filters: ["Activation Editing"],
+      },
+      {
+        title: "Decoding-time",
+        detail: "Sampling control, reranking, and constrained decoding approaches.",
+        count: "1 entry",
         accent: "blue",
+        filters: ["Decoding-time"],
+      },
+      {
+        title: "Verification-based",
+        detail: "Self-check and revise-after-draft methods.",
+        count: "2 entries",
+        accent: "green",
+        filters: ["Verification-based"],
       },
       {
         title: "Tool-augmented",
-        detail: "Search, OCR, and verifier-assisted pipelines.",
-        count: "9 methods",
-        accent: "green",
+        detail: "Search and externally grounded pipelines.",
+        count: "1 entry",
+        accent: "orange",
+        filters: ["Tool-augmented"],
       },
       {
         title: "Uncertainty-aware",
-        detail: "Entropy gating, abstention, and confidence-aware decoding.",
-        count: "8 methods",
-        accent: "orange",
+        detail: "Entropy and confidence-aware decoding.",
+        count: "1 entry",
+        accent: "pink",
+        filters: ["Uncertainty-aware"],
       },
     ] satisfies SubpageCategoryCard[],
     sectionTitle: "Method Categories",
-    tableTitle: "Popular Methods",
-    tableColumns: ["Method", "Type", "Modality", "Venue (Year)", "Benchmarks (Avg. Rank)", "Resources"],
+    tableTitle: "Curated Methods",
+    tableColumns: ["Method", "Type", "Modality", "Venue / First Post", "Focus", "Resources"],
     tableRows: [
       {
         name: "ViHallu",
@@ -1046,7 +1073,7 @@ export const subpageConfigs = {
         note: "Adversarial orthogonal disentanglement with training-free contrastive decoding for LVLM hallucination mitigation.",
         type: "Activation Editing",
         venue: "arXiv 2026",
-        score: "POPE / AMBER",
+        score: "contrastive decoding",
         resources: [
           { label: "paper", href: "https://arxiv.org/abs/2605.25377" },
           { label: "github", href: "https://github.com/Hunter-Wrynn/AOD" },
@@ -1065,7 +1092,7 @@ export const subpageConfigs = {
         note: "Intermediate representation editing for hallucination mitigation.",
         type: "Activation Editing",
         venue: "arXiv 2026",
-        score: "2 / 6",
+        score: "representation editing",
         resources: [
           { label: "paper", href: "https://arxiv.org/abs/2603.29405" },
           { label: "github", href: "https://github.com/ASGO-MM/HIRE" },
@@ -1076,7 +1103,7 @@ export const subpageConfigs = {
         note: "Suppress language priors dynamically during generation.",
         type: "Decoding-time",
         venue: "arXiv 2026",
-        score: "3 / 6",
+        score: "language-prior suppression",
         resources: [
           { label: "paper", href: "https://arxiv.org/abs/2602.22144" },
           { label: "github", href: "https://github.com/lingfengren/NoLan" },
@@ -1087,7 +1114,7 @@ export const subpageConfigs = {
         note: "Mitigate reasoning-time hallucinations in multimodal CoT.",
         type: "Verification-based",
         venue: "CVPR 2026",
-        score: "4 / 7",
+        score: "multimodal CoT",
         resources: [
           { label: "paper", href: "https://arxiv.org/abs/2603.27201" },
           { label: "github", href: "https://github.com/ASGO-MM/MCoT-hallucination" },
@@ -1098,7 +1125,7 @@ export const subpageConfigs = {
         note: "Region-aware chain-of-verification for LVLM hallucination.",
         type: "Verification-based",
         venue: "arXiv 2026",
-        score: "1 / 5",
+        score: "region verification",
         resources: [
           { label: "paper", href: "https://arxiv.org/abs/2604.20696" },
           { label: "github", href: "https://github.com/Jiahao000/R-CoV" },
@@ -1109,7 +1136,7 @@ export const subpageConfigs = {
         note: "Latent entropy-aware decoding for multimodal reasoning models.",
         type: "Uncertainty-aware",
         venue: "arXiv 2026",
-        score: "5 / 7",
+        score: "entropy-aware decoding",
         resources: [
           { label: "paper", href: "https://arxiv.org/abs/2603.13366" },
           { label: "github", href: "https://github.com/mlrm-LEAD/mlrm-LEAD" },
@@ -1186,8 +1213,8 @@ export const subpageConfigs = {
       },
     ] satisfies SubpageCategoryCard[],
     sectionTitle: "Paper Topics",
-    tableTitle: "Recent Papers",
-    tableColumns: ["Paper", "Topic", "Modality", "Venue (Year)", "Signals", "Resources"],
+    tableTitle: "Curated Papers",
+    tableColumns: ["Paper", "Topic", "Modality", "Venue / First Post", "Focus", "Resources"],
     tableRows: [
       {
         name: "See Different, Think Better: Visual Variations Mitigating Hallucinations in LVLMs",

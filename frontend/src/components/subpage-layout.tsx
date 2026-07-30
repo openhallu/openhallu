@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
-  SideListCard,
+  arxivReleaseDates,
   SubpageCategoryCard,
   SubpageSummaryCard,
   SubpageTableRow,
@@ -22,7 +22,6 @@ type SubpageLayoutProps = {
   tableTitle: string;
   tableColumns: readonly string[];
   tableRows: readonly SubpageTableRow[];
-  rightCards: readonly SideListCard[];
   sectionTitle?: string;
 };
 
@@ -38,21 +37,56 @@ function accentPill(accent: string) {
   return accents[accent as keyof typeof accents] ?? accents.blue;
 }
 
+function getReleaseDate(resources: SubpageTableRow["resources"]) {
+  const paper = resources.find(
+    (resource) => typeof resource !== "string" && resource.href.includes("arxiv.org/abs/"),
+  );
+  const match = typeof paper === "string" ? undefined : paper?.href.match(/abs\/(\d{4}\.\d{5})/);
+
+  return match ? arxivReleaseDates[match[1]] : undefined;
+}
+
 export function SubpageLayout(props: SubpageLayoutProps) {
   const [query, setQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const normalizedQuery = query.trim().toLowerCase();
-  const visibleRows = useMemo(() => {
-    if (!normalizedQuery) {
-      return props.tableRows;
-    }
+  const categoryStats = useMemo(
+    () =>
+      props.categories
+        .map((category) => {
+          const filters = category.filters ?? [category.title];
+          const rows = props.tableRows.filter((row) => filters.includes(row.type));
 
-    return props.tableRows.filter((row) =>
+          return { category, count: rows.length };
+        })
+        .filter(({ count }) => count > 0),
+    [props.categories, props.tableRows],
+  );
+  const linkedResourceCount = useMemo(
+    () =>
+      props.tableRows.flatMap((row) => row.resources).filter((resource) => typeof resource !== "string")
+        .length,
+    [props.tableRows],
+  );
+  const datedPaperCount = useMemo(
+    () => props.tableRows.filter((row) => getReleaseDate(row.resources)).length,
+    [props.tableRows],
+  );
+  const visibleRows = useMemo(() => {
+    const category = categoryStats.find(({ category }) => category.title === activeCategory)?.category;
+    const filters = category?.filters ?? (category ? [category.title] : undefined);
+    const categoryRows = filters
+      ? props.tableRows.filter((row) => filters.includes(row.type))
+      : props.tableRows;
+
+    return categoryRows.filter((row) =>
+      !normalizedQuery ||
       [row.name, row.note, row.type, row.venue, row.score]
         .join(" ")
         .toLowerCase()
         .includes(normalizedQuery),
     );
-  }, [normalizedQuery, props.tableRows]);
+  }, [activeCategory, categoryStats, normalizedQuery, props.tableRows]);
 
   return (
     <div className="mx-auto max-w-[1480px] space-y-7">
@@ -81,7 +115,12 @@ export function SubpageLayout(props: SubpageLayoutProps) {
               {props.description}
             </p>
             <div className="flex flex-wrap gap-3">
-              {props.stats.map((stat) => (
+              {[
+                { label: "Curated entries", value: String(props.tableRows.length) },
+                { label: "Categories", value: String(categoryStats.length) },
+                { label: "Verified links", value: String(linkedResourceCount) },
+                { label: "Dated papers", value: String(datedPaperCount) },
+              ].map((stat) => (
                 <div key={stat.label} className="subpage-stat-pill">
                   <span className="font-semibold text-[#4338ca]">{stat.value}</span>
                   <span>{stat.label}</span>
@@ -98,7 +137,7 @@ export function SubpageLayout(props: SubpageLayoutProps) {
 
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#eceff5] pb-4">
         <p className="text-sm text-[#667085]">
-          {normalizedQuery
+          {normalizedQuery || activeCategory
             ? `${visibleRows.length} matching ${visibleRows.length === 1 ? "entry" : "entries"}`
             : `${props.tableRows.length} curated entries`}
         </p>
@@ -123,9 +162,17 @@ export function SubpageLayout(props: SubpageLayoutProps) {
                 {props.sectionTitle ?? "Method Categories"}
               </h2>
             </div>
-            <div className="grid gap-3 xl:grid-cols-5">
-              {props.categories.map((category) => (
-                <div key={category.title} className="subpage-category-card">
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {categoryStats.map(({ category, count }) => (
+                <button
+                  key={category.title}
+                  aria-pressed={activeCategory === category.title}
+                  className={`subpage-category-card ${activeCategory === category.title ? "subpage-category-card-active" : ""}`}
+                  onClick={() =>
+                    setActiveCategory((current) => (current === category.title ? null : category.title))
+                  }
+                  type="button"
+                >
                   <div className="flex items-start gap-3">
                     <div className={`subpage-category-icon ${accentPill(category.accent)}`}>
                       ✦
@@ -140,9 +187,9 @@ export function SubpageLayout(props: SubpageLayoutProps) {
                     </div>
                   </div>
                   <p className="mt-4 text-sm font-medium text-[#475467]">
-                    {category.count}
+                    {count} {count === 1 ? "entry" : "entries"}
                   </p>
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -178,7 +225,14 @@ export function SubpageLayout(props: SubpageLayoutProps) {
                   </div>
                   <div className="subpage-table-pill">{row.type}</div>
                   <div className="text-sm text-[#667085]">vision-language</div>
-                  <div className="text-sm text-[#475467]">{row.venue}</div>
+                  <div className="text-sm text-[#475467]">
+                    <p>{row.venue}</p>
+                    {getReleaseDate(row.resources) ? (
+                      <p className="mt-1 text-xs text-[#98a2b3]">
+                        First posted {getReleaseDate(row.resources)}
+                      </p>
+                    ) : null}
+                  </div>
                   <div className="text-sm font-medium text-[#111827]">{row.score}</div>
                   <div className="flex gap-2">
                     {row.resources.map((resource) =>
@@ -213,22 +267,29 @@ export function SubpageLayout(props: SubpageLayoutProps) {
         </div>
 
         <aside className="space-y-4">
-          {props.rightCards.map((card) => (
-            <div key={card.title} className="subpage-side-panel p-5">
-              <div className="mb-4 flex items-center justify-between gap-3">
-                <h3 className="text-[1.05rem] font-semibold tracking-[-0.03em] text-[#111827]">
-                  {card.title}
-                </h3>
+          <div className="subpage-side-panel p-5">
+            <h3 className="text-[1.05rem] font-semibold tracking-[-0.03em] text-[#111827]">
+              Collection snapshot
+            </h3>
+            <dl className="mt-4 space-y-3 text-sm text-[#475467]">
+              <div className="flex items-center justify-between gap-4">
+                <dt>Curated entries</dt>
+                <dd className="font-semibold text-[#111827]">{props.tableRows.length}</dd>
               </div>
-              <div className="space-y-3">
-                {card.items.map((item) => (
-                  <div key={item} className="text-sm leading-7 text-[#475467]">
-                    {item}
-                  </div>
-                ))}
+              <div className="flex items-center justify-between gap-4">
+                <dt>Visible now</dt>
+                <dd className="font-semibold text-[#111827]">{visibleRows.length}</dd>
               </div>
-            </div>
-          ))}
+              <div className="flex items-center justify-between gap-4">
+                <dt>Verified links</dt>
+                <dd className="font-semibold text-[#111827]">{linkedResourceCount}</dd>
+              </div>
+              <div className="flex items-center justify-between gap-4">
+                <dt>First-post dates</dt>
+                <dd className="font-semibold text-[#111827]">{datedPaperCount}</dd>
+              </div>
+            </dl>
+          </div>
         </aside>
       </section>
     </div>

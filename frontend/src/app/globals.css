@@ -806,8 +806,25 @@ summary {
 }
 
 .subpage-category-card {
+  width: 100%;
   border-radius: 24px;
   padding: 0.9rem;
+  text-align: left;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.subpage-category-card:hover,
+.subpage-category-card-active {
+  border-color: #c7d2fe;
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.08);
+}
+
+.subpage-category-card:hover {
+  transform: translateY(-1px);
+}
+
+.subpage-category-card-active {
+  background: #f8f9ff;
 }
 
 .subpage-category-icon {
