@@ -1,0 +1,17 @@
+# Generated frontend artifacts
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.playwright-cli/
+frontend/output/
+
+# Local browser-test artifacts
+.playwright-cli/
+output/
+
+# Local reference papers are not required to build or deploy the website.
+papers/**/*.pdf
+
+# OS and editor files
+.DS_Store
+*.tsbuildinfo
