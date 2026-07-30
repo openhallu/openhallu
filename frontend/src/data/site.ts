@@ -29,24 +29,9 @@ export type TimelineItem = {
 export type HomeCategoryCard = {
   title: string;
   description: string;
-  stat: string;
   href: string;
   accent: string;
   icon: string;
-};
-
-export type HomeTrendItem = {
-  rank: string;
-  title: string;
-  meta: string;
-  stars: string;
-};
-
-export type HomeStatCard = {
-  label: string;
-  value: string;
-  delta: string;
-  accent: string;
 };
 
 export type SubpageSummaryCard = {
@@ -176,7 +161,6 @@ export const homeCategoryCards: HomeCategoryCard[] = [
   {
     title: "Papers",
     description: "Latest papers and links.",
-    stat: "3,245 papers",
     href: "/papers",
     accent: "blue",
     icon: "📄",
@@ -184,7 +168,6 @@ export const homeCategoryCards: HomeCategoryCard[] = [
   {
     title: "Dataset & Bench",
     description: "Datasets and benchmarks.",
-    stat: "78 datasets",
     href: "/dataset-bench",
     accent: "green",
     icon: "🗂️",
@@ -192,7 +175,6 @@ export const homeCategoryCards: HomeCategoryCard[] = [
   {
     title: "Detection",
     description: "Detection methods.",
-    stat: "56 methods",
     href: "/detection",
     accent: "violet",
     icon: "🧭",
@@ -200,7 +182,6 @@ export const homeCategoryCards: HomeCategoryCard[] = [
   {
     title: "Quantification",
     description: "Quantification methods.",
-    stat: "32 methods",
     href: "/quantification",
     accent: "orange",
     icon: "📈",
@@ -208,33 +189,10 @@ export const homeCategoryCards: HomeCategoryCard[] = [
   {
     title: "Mitigation",
     description: "Mitigation methods.",
-    stat: "48 methods",
     href: "/mitigation",
     accent: "pink",
     icon: "🛡️",
   },
-];
-
-export const homeTrendItems: HomeTrendItem[] = [
-  {
-    rank: "1",
-    title: "HallusionBench: An Advanced Diagnostic Suite for Entangled Language Hallucination & Visual Illusion in LVLMs",
-    meta: "arXiv 2024 • 312 saves",
-    stars: "128",
-  },
-  {
-    rank: "2",
-    title: "EgoHallusion: Benchmarking Hallucination in Multimodal Large Language Models for Embodied Interactions",
-    meta: "arXiv 2024 • 267 saves",
-    stars: "96",
-  },
-];
-
-export const homeStatCards: HomeStatCard[] = [
-  { label: "Papers", value: "3,251", delta: "+142 this month", accent: "blue" },
-  { label: "Datasets", value: "78", delta: "+6 this month", accent: "green" },
-  { label: "Methods", value: "136", delta: "+9 this month", accent: "violet" },
-  { label: "Benchmarks", value: "42", delta: "+3 this month", accent: "orange" },
 ];
 
 export const homeHighlights: HighlightCard[] = [
@@ -657,15 +615,15 @@ export const subpageConfigs = {
       },
     ] satisfies SubpageCategoryCard[],
     sectionTitle: "Method Categories",
-    tableTitle: "Popular Methods",
-    tableColumns: ["Method", "Type", "Modality", "Venue (Year)", "Benchmarks (Avg. Rank)", "Resources"],
+    tableTitle: "Curated Methods",
+    tableColumns: ["Method", "Type", "Modality", "Venue / First Post", "Focus", "Resources"],
     tableRows: [
       {
         name: "HalluLens",
         note: "A general framework for detecting visual hallucinations in LVLMs.",
         type: "Model-based",
         venue: "CVPR 2024",
-        score: "5 / 8",
+        score: "visual hallucination detection",
         resources: ["paper", "github"],
       },
       {
@@ -673,7 +631,7 @@ export const subpageConfigs = {
         note: "Probe-based Object Perception Evaluation for LVLMs.",
         type: "Consistency-based",
         venue: "ICLR 2024",
-        score: "2 / 8",
+        score: "object perception probing",
         resources: ["paper", "github"],
       },
       {
@@ -681,7 +639,7 @@ export const subpageConfigs = {
         note: "Visual Credibility Detection for Multimodal Outputs.",
         type: "Model-based",
         venue: "NeurIPS 2023",
-        score: "3 / 6",
+        score: "visual credibility",
         resources: ["paper", "github"],
       },
       {
@@ -689,7 +647,7 @@ export const subpageConfigs = {
         note: "Detecting hallucinations via cross-modal discrepancy.",
         type: "Consistency-based",
         venue: "ACL 2024",
-        score: "4 / 7",
+        score: "cross-modal discrepancy",
         resources: ["paper", "github"],
       },
       {
@@ -697,7 +655,7 @@ export const subpageConfigs = {
         note: "Uncertainty-aware detection for hallucination.",
         type: "Uncertainty-based",
         venue: "AAAI 2024",
-        score: "6 / 7",
+        score: "uncertainty estimation",
         resources: ["paper", "github"],
       },
     ] satisfies SubpageTableRow[],
@@ -912,7 +870,7 @@ export const subpageConfigs = {
         note: "Classic object hallucination metric for captioning outputs.",
         type: "Hallucination Rate",
         venue: "CVPR 2018",
-        score: "5 / 8",
+        score: "object hallucination",
         resources: ["paper", "metric"],
       },
       {
@@ -920,7 +878,7 @@ export const subpageConfigs = {
         note: "Probe-based evaluation score for object perception hallucination.",
         type: "Faithfulness",
         venue: "ICCV 2023",
-        score: "2 / 5",
+        score: "object perception probing",
         resources: ["paper", "github"],
       },
       {
@@ -928,7 +886,7 @@ export const subpageConfigs = {
         note: "A unified scorecard for multimodal hallucination comparisons.",
         type: "Composite Score",
         venue: "ACL 2025",
-        score: "4 / 6",
+        score: "comparison scorecard",
         resources: ["paper", "leaderboard"],
       },
       {
@@ -936,7 +894,7 @@ export const subpageConfigs = {
         note: "Uncertainty-driven metric for hallucination risk estimation.",
         type: "Calibration",
         venue: "CVPR 2026",
-        score: "3 / 4",
+        score: "risk estimation",
         resources: ["paper", "github"],
       },
       {
@@ -944,7 +902,7 @@ export const subpageConfigs = {
         note: "Scorecard setup for faithfulness and task accuracy.",
         type: "Faithfulness",
         venue: "NeurIPS 2025",
-        score: "6 / 7",
+        score: "faithfulness evaluation",
         resources: ["paper", "dataset"],
       },
     ] satisfies SubpageTableRow[],

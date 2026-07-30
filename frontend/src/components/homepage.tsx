@@ -1,10 +1,50 @@
 import Link from "next/link";
 import {
   homeCategoryCards,
-  homeStatCards,
-  homeTrendItems,
   modules,
+  SubpageCategoryCard,
+  subpageConfigs,
 } from "@/data/site";
+
+const homepageCollections = [
+  { card: homeCategoryCards[0], config: subpageConfigs.papers },
+  { card: homeCategoryCards[1], config: subpageConfigs.datasetBench },
+  { card: homeCategoryCards[2], config: subpageConfigs.detection },
+  { card: homeCategoryCards[3], config: subpageConfigs.quantification },
+  { card: homeCategoryCards[4], config: subpageConfigs.mitigation },
+];
+
+function countVerifiedLinks(
+  tableRows: readonly { resources: readonly (string | { label: string; href: string })[] }[],
+) {
+  return tableRows.reduce(
+    (total, row) => total + row.resources.filter((resource) => typeof resource !== "string").length,
+    0,
+  );
+}
+
+function countVisibleCategories(config: {
+  categories: readonly SubpageCategoryCard[];
+  tableRows: readonly { type: string }[];
+}) {
+  return config.categories.filter((category) => {
+    const filters = category.filters ?? [category.title];
+    return config.tableRows.some((row) => filters.includes(row.type));
+  }).length;
+}
+
+const curatedEntryCount = homepageCollections.reduce(
+  (total, { config }) => total + config.tableRows.length,
+  0,
+);
+const verifiedLinkCount = homepageCollections.reduce(
+  (total, { config }) => total + countVerifiedLinks(config.tableRows),
+  0,
+);
+const categoryCount = homepageCollections.reduce(
+  (total, { config }) => total + countVisibleCategories(config),
+  0,
+);
 
 function accentClasses(accent: string) {
   const accents = {
@@ -51,16 +91,16 @@ export function HomeHero() {
 
           <div className="grid gap-3 sm:grid-cols-3">
             <div className="home-mini-card">
-              <p className="home-mini-label">Papers</p>
-              <p className="home-mini-value">3,245</p>
+              <p className="home-mini-label">Curated entries</p>
+              <p className="home-mini-value">{curatedEntryCount}</p>
             </div>
             <div className="home-mini-card">
-              <p className="home-mini-label">Datasets</p>
-              <p className="home-mini-value">78</p>
+              <p className="home-mini-label">Collection pages</p>
+              <p className="home-mini-value">{homepageCollections.length}</p>
             </div>
             <div className="home-mini-card">
-              <p className="home-mini-label">Methods</p>
-              <p className="home-mini-value">136</p>
+              <p className="home-mini-label">Verified links</p>
+              <p className="home-mini-value">{verifiedLinkCount}</p>
             </div>
           </div>
         </div>
@@ -117,7 +157,7 @@ export function HomeCategorySection() {
         </h2>
       </div>
       <div className="grid gap-4 xl:grid-cols-5">
-        {homeCategoryCards.map((card) => (
+        {homepageCollections.map(({ card, config }) => (
           <Link
             key={card.href}
             href={card.href}
@@ -136,7 +176,7 @@ export function HomeCategorySection() {
               </p>
             </div>
             <div className="mt-4 inline-flex rounded-full border border-white/70 bg-white/70 px-3 py-1 text-[0.8rem] font-medium">
-              {card.stat}
+              {config.tableRows.length} {config.tableRows.length === 1 ? "entry" : "entries"}
             </div>
           </Link>
         ))}
@@ -151,24 +191,22 @@ export function HomeInsightSection() {
       <div className="home-info-panel p-7">
         <div className="mb-6 flex items-center justify-between gap-3">
           <h3 className="text-[1.65rem] font-semibold tracking-[-0.05em] text-[#101828]">
-            Recent highlights
+            Browse collections
           </h3>
-          <Link href="/papers" className="text-sm font-medium text-[#5260ff]">
-            View all papers →
-          </Link>
         </div>
         <div className="space-y-4">
-          {homeTrendItems.map((item) => (
-            <div key={item.rank} className="home-trend-row">
-              <div className="home-rank-pill">{item.rank}</div>
+          {homepageCollections.map(({ card, config }) => (
+            <Link key={card.href} href={card.href} className="home-trend-row block transition hover:text-[#4338ca]">
               <div className="min-w-0 flex-1">
                 <p className="text-[0.98rem] font-medium leading-7 text-[#111827]">
-                  {item.title}
+                  {card.title}
                 </p>
-                <p className="mt-1 text-sm text-[#667085]">{item.meta}</p>
+                <p className="mt-1 text-sm text-[#667085]">{card.description}</p>
               </div>
-              <div className="home-star-pill">★ {item.stars}</div>
-            </div>
+              <span className="mt-3 inline-flex text-sm font-medium text-[#5260ff]">
+                {config.tableRows.length} {config.tableRows.length === 1 ? "entry" : "entries"} →
+              </span>
+            </Link>
           ))}
         </div>
       </div>
@@ -176,12 +214,16 @@ export function HomeInsightSection() {
       <div className="home-info-panel p-7">
         <div className="mb-6 flex items-center justify-between gap-3">
           <h3 className="text-[1.65rem] font-semibold tracking-[-0.05em] text-[#101828]">
-            Collection stats
+            Collection snapshot
           </h3>
-          <span className="text-sm text-[#667085]">Updated weekly</span>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          {homeStatCards.map((card) => (
+          {[
+            { label: "Curated entries", value: curatedEntryCount, accent: "blue" },
+            { label: "Collection pages", value: homepageCollections.length, accent: "green" },
+            { label: "Visible categories", value: categoryCount, accent: "violet" },
+            { label: "Verified links", value: verifiedLinkCount, accent: "orange" },
+          ].map((card) => (
             <div
               key={card.label}
               className={`rounded-[24px] border bg-gradient-to-br p-5 ${accentClasses(card.accent)}`}
@@ -190,7 +232,7 @@ export function HomeInsightSection() {
               <p className="mt-3 text-[2rem] font-semibold tracking-[-0.05em] text-[#101828]">
                 {card.value}
               </p>
-              <p className="mt-2 text-sm text-[#667085]">{card.delta}</p>
+              <p className="mt-2 text-sm text-[#667085]">Calculated from the entries shown here.</p>
             </div>
           ))}
         </div>
