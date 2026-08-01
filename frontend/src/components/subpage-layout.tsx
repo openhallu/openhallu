@@ -5,7 +5,6 @@ import { useMemo, useState } from "react";
 import {
   arxivReleaseDates,
   SubpageCategoryCard,
-  SubpageSummaryCard,
   SubpageTableRow,
 } from "@/data/site";
 
@@ -17,7 +16,6 @@ type SubpageLayoutProps = {
   heroIcon: string;
   badge: string;
   followLabel: string;
-  stats: SubpageSummaryCard[];
   categories: readonly SubpageCategoryCard[];
   tableTitle: string;
   tableColumns: readonly string[];
@@ -82,6 +80,8 @@ export function SubpageLayout(props: SubpageLayoutProps) {
     return categoryRows.filter((row) =>
       !normalizedQuery ||
       [row.name, row.note, row.type, row.venue, row.score]
+        .concat(row.tags ?? [])
+        .concat(row.authors ?? [], row.correspondingAuthors ?? [], row.affiliations ?? [])
         .join(" ")
         .toLowerCase()
         .includes(normalizedQuery),
@@ -154,8 +154,7 @@ export function SubpageLayout(props: SubpageLayoutProps) {
         </div>
       </div>
 
-      <section className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_290px]">
-        <div className="space-y-8">
+      <section className="space-y-8">
           <div className="space-y-5">
             <div className="flex items-center justify-between gap-3">
               <h2 className="text-[1.7rem] font-semibold tracking-[-0.05em] text-[#111827]">
@@ -220,6 +219,15 @@ export function SubpageLayout(props: SubpageLayoutProps) {
                           {row.name}
                         </p>
                         <p className="mt-1 text-sm leading-6 text-[#667085]">{row.note}</p>
+                        {row.tags?.length ? (
+                          <div className="subpage-row-tags" aria-label="Method tags">
+                            {row.tags.map((tag) => (
+                              <span key={tag} className="subpage-row-tag">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                   </div>
@@ -255,6 +263,28 @@ export function SubpageLayout(props: SubpageLayoutProps) {
                       ),
                     )}
                   </div>
+                  {row.authors?.length ? (
+                    <div className="subpage-paper-meta">
+                      <span>
+                        <strong>Authors:</strong> {row.authors.join(", ")}
+                      </span>
+                      <span aria-hidden="true">·</span>
+                      <span>
+                        <strong>Corresponding:</strong>{" "}
+                        {row.correspondingAuthors?.length
+                          ? row.correspondingAuthors.join(", ")
+                          : "not specified"}
+                      </span>
+                      <span aria-hidden="true">·</span>
+                      <span>
+                        <strong>Affiliation:</strong> {row.affiliations?.join("; ")}
+                      </span>
+                    </div>
+                  ) : row.metadataNote ? (
+                    <div className="subpage-paper-meta subpage-paper-meta-pending">
+                      {row.metadataNote}
+                    </div>
+                  ) : null}
                 </div>
               ))}
               {visibleRows.length === 0 ? (
@@ -264,33 +294,6 @@ export function SubpageLayout(props: SubpageLayoutProps) {
               ) : null}
             </div>
           </div>
-        </div>
-
-        <aside className="space-y-4">
-          <div className="subpage-side-panel p-5">
-            <h3 className="text-[1.05rem] font-semibold tracking-[-0.03em] text-[#111827]">
-              Collection snapshot
-            </h3>
-            <dl className="mt-4 space-y-3 text-sm text-[#475467]">
-              <div className="flex items-center justify-between gap-4">
-                <dt>Curated entries</dt>
-                <dd className="font-semibold text-[#111827]">{props.tableRows.length}</dd>
-              </div>
-              <div className="flex items-center justify-between gap-4">
-                <dt>Visible now</dt>
-                <dd className="font-semibold text-[#111827]">{visibleRows.length}</dd>
-              </div>
-              <div className="flex items-center justify-between gap-4">
-                <dt>Verified links</dt>
-                <dd className="font-semibold text-[#111827]">{linkedResourceCount}</dd>
-              </div>
-              <div className="flex items-center justify-between gap-4">
-                <dt>First-post dates</dt>
-                <dd className="font-semibold text-[#111827]">{datedPaperCount}</dd>
-              </div>
-            </dl>
-          </div>
-        </aside>
       </section>
     </div>
   );

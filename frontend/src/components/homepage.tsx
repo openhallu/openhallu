@@ -107,38 +107,50 @@ export function HomeHero() {
 
         <div className="home-network-card">
           <div className="home-network-grid" />
+          <div aria-hidden="true" className="home-network-spokes">
+            <span className="home-network-spoke home-network-spoke-one" />
+            <span className="home-network-spoke home-network-spoke-two" />
+            <span className="home-network-spoke home-network-spoke-three" />
+            <span className="home-network-spoke home-network-spoke-four" />
+            <span className="home-network-spoke home-network-spoke-five" />
+          </div>
           <div className="home-center-stage">
-            <div className="home-center-stage-inner">
-              <div className="home-center-cube">OpenHallu</div>
+            <div className="home-center-hub">
+              <span className="home-center-label">Research map</span>
+              <strong>OpenHallu</strong>
+              <span>{curatedEntryCount} curated entries</span>
             </div>
           </div>
 
           {modules.map((module, index) => {
+            const collection = homepageCollections.find(({ card }) => card.href === module.href);
             const placements = [
-              "left-[6%] top-[10%]",
+              "left-[5%] top-[8%]",
               "right-[5%] top-[8%]",
-              "left-[8%] top-[58%]",
-              "right-[5%] top-[56%]",
-              "left-[34%] top-[3%]",
+              "left-[6%] top-[65%]",
+              "right-[5%] top-[65%]",
+              "left-[36%] top-[3%]",
             ];
 
             return (
-              <div
+              <Link
                 key={module.href}
+                href={module.href}
                 className={`home-floating-node ${placements[index] ?? ""}`}
               >
                 <div className="home-floating-icon">
-                  {homeCategoryCards[index]?.icon ?? "•"}
+                  {collection?.card.icon ?? "•"}
                 </div>
                 <div className="space-y-1">
                   <p className="text-[0.98rem] font-semibold tracking-[-0.03em] text-[#111827]">
                     {module.name}
                   </p>
                   <p className="text-[0.88rem] leading-6 text-[#667085]">
-                    {module.description}
+                    {collection?.config.tableRows.length ?? 0} curated entries
                   </p>
                 </div>
-              </div>
+                <span aria-hidden="true" className="home-floating-arrow">→</span>
+              </Link>
             );
           })}
         </div>

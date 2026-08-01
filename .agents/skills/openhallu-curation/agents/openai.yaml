@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenHallu Curation"
+  short_description: "Add verified papers and resources without restyling"
+  default_prompt: "Use $openhallu-curation to add verified papers and resource links to OpenHallu while preserving its design."
