@@ -1,3 +1,14 @@
+import {
+  openhalluMitigationArxivReleaseDates,
+  openhalluMitigationCandidates150,
+  openhalluMitigationPapers150,
+} from "./mitigation-batch";
+import {
+  openhalluBenchmarkArxivReleaseDates,
+  openhalluBenchmarkPapers60,
+  openhalluBenchmarks60,
+} from "./benchmark-batch";
+
 export type ModuleCard = {
   name: string;
   href: string;
@@ -79,6 +90,8 @@ export const arxivReleaseDates: Record<string, string> = {
   "2604.20696": "Apr 22, 2026",
   "2605.25377": "May 25, 2026",
   "2606.03937": "Jun 2, 2026",
+  ...openhalluMitigationArxivReleaseDates,
+  ...openhalluBenchmarkArxivReleaseDates,
 };
 
 export type PaperCard = {
@@ -834,6 +847,7 @@ export const subpageConfigs = {
           { label: "github", href: "https://github.com/junyangwang0410/AMBER" },
         ],
       },
+      ...openhalluBenchmarks60,
     ] satisfies SubpageTableRow[],
     aboutTitle: "About This Collection",
     aboutBody:
@@ -1199,6 +1213,7 @@ export const subpageConfigs = {
           { label: "github", href: "https://github.com/mlrm-LEAD/mlrm-LEAD" },
         ],
       },
+      ...openhalluMitigationCandidates150,
     ] satisfies SubpageTableRow[],
     aboutTitle: "About This Collection",
     aboutBody:
@@ -1413,6 +1428,8 @@ export const subpageConfigs = {
           { label: "github", href: "https://github.com/mlrm-LEAD/mlrm-LEAD" },
         ],
       },
+      ...openhalluMitigationPapers150,
+      ...openhalluBenchmarkPapers60,
     ] satisfies SubpageTableRow[],
     aboutTitle: "About This Collection",
     aboutBody:
