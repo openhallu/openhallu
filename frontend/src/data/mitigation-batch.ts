@@ -247,7 +247,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "TOMM 2026",
     score: "vision-guided lexical dpo",
     authors: ["Siyuan Li","Feng Wang","Simeng Qin"],
-    metadataNote: "Exact title and first three authors sourced from Crossref DOI metadata registered by ACM; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["School of Data Science and Intelligent Media, Communication University of China, Beijing, China","Tianjin University, Tianjin, China","Northeastern University, Shenyang, China","Alibaba Group, Hangzhou, China","Communication University of China, Beijing, China"],
+    metadataNote: "Exact title and first three authors sourced from Crossref; affiliations sourced from publisher-registered Crossref author metadata; corresponding-author status was not explicitly identified.",
     resources: [{ label: "paper", href: "https://doi.org/10.1145/3796715" }],
   },
   {
@@ -1343,8 +1344,9 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "Computers in Biology and Medicine 2026",
     score: "sparse visual contrastive decoding",
     authors: ["Zahra Mahdavi","Zahra Khodakaramimaghsoud","Hooman Khaloo"],
-    metadataNote: "Exact title and first three authors sourced from Crossref DOI metadata registered by Elsevier; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://doi.org/10.1016/j.compbiomed.2025.111347" }],
+    affiliations: ["Department of computer science, University of Central Florida, Orlando, USA","Department of Bioengineering, University of Pennsylvania, Philadelphia, PA, USA","Department of electrical engineering, Columbia university, New York, NY, USA","Technical University of Applied Sciences Regensburg, Regensburg, Germany","Department of Surgery, University of Calgary, Calgary, Alberta, Canada","University College of Nabi Akram, Tabriz, Iran","School of Electrical Engineering, Iran University of Science and Technology, Tehran, Iran"],
+    metadataNote: "Exact title and first three authors sourced from Crossref; affiliations sourced from the official arXiv/ar5iv author block; corresponding-author status was not explicitly identified.",
+    resources: [{"label":"paper","href":"https://arxiv.org/abs/2512.01922"}],
   },
   {
     name: "Mitigating Hallucinations in Large Vision-Language Models (LVLMs) via Language-Contrastive Decoding (LCD)",
@@ -1541,7 +1543,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "ICASSP 2026",
     score: "multi-agent verification",
     authors: ["Soohyun Kim","Gusang Lee","Kyuhong Shim"],
-    metadataNote: "Exact title and first three authors sourced from Crossref DOI metadata registered by IEEE; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["Seoul National University, Department of Electrical and Computer Engineering, Korea","Sungkyunkwan University, Department of Computer Science and Engineering, Korea"],
+    metadataNote: "Exact title and first three authors sourced from Crossref; affiliations sourced from publisher-registered Crossref author metadata; corresponding-author status was not explicitly identified.",
     resources: [{ label: "paper", href: "https://doi.org/10.1109/icassp55912.2026.11463505" }],
   },
   {
@@ -1997,5 +2000,6 @@ export const openhalluMitigationArxivReleaseDates: Record<string, string> = {
   "2508.20181": "Aug 27, 2025",
   "2509.00371": "Aug 30, 2025",
   "2509.24491": "Sep 29, 2025",
-  "2511.17254": "Nov 21, 2025"
+  "2511.17254": "Nov 21, 2025",
+  "2512.01922": "Dec 1, 2025"
 };

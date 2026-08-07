@@ -632,8 +632,9 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     score: "N/A / N/A",
     authors: ["Xiaoyu Pan","Yang Bai","Ke Zou"],
     correspondingAuthors: [],
-    metadataNote: "Exact title and first three authors sourced from Crossref DOI metadata registered by Elsevier; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://doi.org/10.1016/j.inffus.2025.103631" }],
+    affiliations: ["Institute of High Performance Computing, Agency for Science, Technology and Research (A*STAR), 1 Fusionopolis Way, Singapore, 138632","Centre for Innovation and Precision Eye Health; and Department of Ophthalmology, NUHS Tower Block, Level 7, 1E Kent Ridge Road, Singapore, 119228","Singapore Eye Research Institute, Singapore National Eye Centre, 20 College Road, Singapore, 169856"],
+    metadataNote: "Exact title and first three authors sourced from Crossref; affiliations sourced from the official arXiv/ar5iv author block; corresponding-author status was not explicitly identified.",
+    resources: [{"label":"paper","href":"https://arxiv.org/abs/2507.22929"},{"label":"github","href":"https://github.com/ppxy1/EH-Benchmark"}],
   },
   {
     name: "Evaluation and Analysis of Hallucination in Large Vision-Language Models",
@@ -883,5 +884,6 @@ export const openhalluBenchmarkArxivReleaseDates: Record<string, string> = {
   "2409.01151": "Sep 2, 2024",
   "2409.09748": "Sep 15, 2024",
   "2409.11007": "Sep 17, 2024",
-  "2409.12953": "Sep 19, 2024"
+  "2409.12953": "Sep 19, 2024",
+  "2507.22929": "Jul 24, 2025"
 };
