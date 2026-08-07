@@ -13,7 +13,7 @@ export type OpenHalluBenchmarkObject = {
   correspondingAuthors: string[];
   affiliations?: string[];
   metadataNote: string;
-  resources: { label: "paper"; href: string }[];
+  resources: { label: "paper" | "github" | "Hugging Face"; href: string }[];
 };
 
 export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[]> = {
@@ -40,7 +40,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     authors: ["Zhecan Wang","Garrett Bingham","Adams Yu"],
     correspondingAuthors: [],
     metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.15680" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.15680" }, { label: "github", href: "https://github.com/google/haloquest" }],
   },
   {
     name: "HalluAudio: A Comprehensive Benchmark for Hallucination Detection in Large Audio-Language Models",
@@ -89,8 +89,9 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     score: "2,000 / Characterization Score",
     authors: ["Zishan Gu","Changchang Yin","Fenglin Liu"],
     correspondingAuthors: [],
-    metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.02730" }],
+    affiliations: ["The Ohio State University","University of Oxford"],
+    metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.02730" }, { label: "github", href: "https://github.com/dongzizhu/MedVH" }],
   },
   {
     name: "EventHallusion: Diagnosing Event Hallucinations in Video LLMs",
@@ -102,7 +103,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     authors: ["Jiacheng Zhang","Yang Jiao","Shaoxiang Chen"],
     correspondingAuthors: [],
     metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.16597" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.16597" }, { label: "github", href: "https://github.com/Stevetich/EventHallusion" }],
   },
   {
     name: "Mitigating Dialogue Hallucination for Large Vision Language Models via Adversarial Instruction Tuning",
@@ -138,8 +139,9 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     score: "3,000 / Acc",
     authors: ["Jiale Li","Mingrui Wu","Zixiang Jin"],
     correspondingAuthors: [],
-    metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2508.00726" }],
+    affiliations: ["Xiamen University","Key Laboratory of Multimedia Trusted Perception and Efficient Computing, Ministry of Education of China","Zhongguancun Academy"],
+    metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2508.00726" }, { label: "github", href: "https://github.com/pgtrece/DAB" }],
   },
   {
     name: "The Instinctive Bias: Spurious Images lead to Illusion in MLLMs",
@@ -193,7 +195,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["Work done at ScaleAI"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2308.06394" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2308.06394" }, { label: "github", href: "https://github.com/hendryx-scale/mhal-detect" }],
   },
   {
     name: "Negative Object Presence Evaluation (NOPE) to Measure Object Hallucination in Vision-Language Models",
@@ -298,7 +300,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["University of California, Los Angeles"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2404.13874" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2404.13874" }, { label: "github", href: "https://github.com/haoyiq114/VALOR" }],
   },
   {
     name: "AutoHallusion: Automatic Generation of Hallucination Benchmarks for Vision-Language Models",
@@ -337,7 +339,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["Institute of Computing Technology, Chinese Academy of Sciences","University of Chinese Academy of Sciences","Key Laboratory of Al Safety, Chinese Academy of Sciences"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2406.17115" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2406.17115" }, { label: "github", href: "https://github.com/HQHBench/HQHBench" }],
   },
   {
     name: "FIHA: Autonomous Hallucination Evaluation in Vision-Language Models with Davidson Scene Graphs",
@@ -363,7 +365,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["The University of Hong Kong","Xi’an Jiaotong-Liverpool University","School of Computer Science and Engineering, Beihang University, Beijing, China","State Key Laboratory of Software, Development Environment","Zhongguancun Laboratory"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.04107" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.04107" }, { label: "github", href: "https://github.com/NLPCode/TUBench" }],
   },
   {
     name: "MFC-Bench: Benchmarking Multimodal Fact-Checking with Large Vision-Language Models",
@@ -387,8 +389,9 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     score: "1,260 / Acc",
     authors: ["Peng Ding","Jingyu Wu","Jun Kuang"],
     correspondingAuthors: [],
-    metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.01355" }],
+    affiliations: ["National Key Laboratory for Novel Software Technology, Nanjing University","College of Computer Science and Technology, Zhejiang University","Zhejiang-Singapore Innovation and AI Joint Research Lab, Zhejiang University"],
+    metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.01355" }, { label: "github", href: "https://github.com/NJUNLP/Hallu-PI" }],
   },
   {
     name: "CAST: Cross-modal Alignment Similarity Test for Vision Language Models",
@@ -401,7 +404,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["University of Edinburgh","University of Trento"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.11007" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.11007" }, { label: "github", href: "https://github.com/gautierdag/cast" }],
   },
   ],
   "Captioning": [
@@ -416,7 +419,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["University of Texas at Dallas","Johns Hopkins University","University of Notre Dame"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2311.01477" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2311.01477" }, { label: "github", href: "https://github.com/bcdnlp/FAITHSCORE" }],
   },
   {
     name: "Mitigating Open-Vocabulary Caption Hallucinations",
@@ -442,7 +445,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["ByteDance Inc.","Stanford University","UC Berkeley","UIUC"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2310.01779" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2310.01779" }, { label: "github", href: "https://github.com/bronyayang/HallE_Switch" }],
   },
   {
     name: "ALOHa: A New Measure for Hallucination in Captioning Models",
@@ -509,7 +512,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["Singapore Management University, Beijing Forestry University","University of Electronic Science and Technology of China"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2312.01701" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2312.01701" }, { label: "github", href: "https://github.com/Anonymousanoy/FOHE" }],
   },
   {
     name: "Visual Hallucinations of Multi-modal Large Language Models",
@@ -521,7 +524,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     authors: ["Wen Huang","Hongbin Liu","Minxin Guo"],
     correspondingAuthors: [],
     metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2402.14683" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2402.14683" }, { label: "github", href: "https://github.com/wenhuang2000/VHTest" }],
   },
   {
     name: "PhD: A ChatGPT-Prompted Visual hallucination Evaluation Dataset",
@@ -547,7 +550,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["Baidu Inc.","Tianjin University","The University of Sydney","University of Technology Sydney","Tsinghua University","Chinese Academy of Science"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2405.11165" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2405.11165" }, { label: "github", href: "https://github.com/takomc/amp" }],
   },
   {
     name: "Evaluating and Analyzing Relationship Hallucinations in Large Vision-Language Models",
@@ -634,7 +637,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["School of Computer and Information Technology, Beijing Jiaotong University, Beijing, China","School of Software Engineering, Xi’an Jiaotong University, Xi’an, China","School of Software, Shandong University, Jinan, China","MAIS, Institute of Automation, Chinese Academy of Sciences(CASIA), Beijing, China","DAMO Academy, Alibaba Group","Work done during internship at DAMO Academy, Alibaba Group."],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2308.15126" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2308.15126" }, { label: "github", href: "https://github.com/junyangwang0410/HaELM" }],
   },
   {
     name: "Holistic Analysis of Hallucination in GPT-4V(ision): Bias and Interference Challenges",
@@ -647,7 +650,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["UNC-Chapel Hill","Carnegie Mellon University","Stanford University","Rutgers University"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2311.03287" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2311.03287" }, { label: "github", href: "https://github.com/gzcch/Bingo" }],
   },
   {
     name: "MMInstruct: A High-Quality Multi-Modal Instruction Tuning Dataset with Extensive Diversity",
@@ -659,7 +662,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     authors: ["Yangzhou Liu","Yue Cao","Zhangwei Gao"],
     correspondingAuthors: [],
     metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.15838" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.15838" }, { label: "github", href: "https://github.com/yuecao0119/MMInstruct" }],
   },
   {
     name: "MLLM can see? Dynamic Correction Decoding for Hallucination Mitigation",
@@ -672,7 +675,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["Zhejiang University","National University of Singapore, NUS-NCS Joint Lab, Singapore"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.11779" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.11779" }, { label: "github", href: "https://github.com/zjunlp/DeCo" }],
   },
   {
     name: "Mitigating Hallucination in Visual Language Models with Visual Supervision",
@@ -709,7 +712,8 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     score: "2,095 / Acc",
     authors: ["Atsuyuki Miyai","Jingkang Yang","Jingyang Zhang"],
     correspondingAuthors: [],
-    metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
+    affiliations: ["The University of Tokyo","S-Lab, Nanyang Technological University","Duke University","University of Wisconsin-Madison","LY Corporation","Tokyo University of Science"],
+    metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2403.20331" }],
   },
   {
@@ -723,7 +727,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["Harbin Institute of Technology","Peng Cheng Laboratory"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.00569" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.00569" }, { label: "github", href: "https://github.com/whongzhong/MMHalSnowball" }],
   },
   {
     name: "LOTUS: A Leaderboard for Detailed Image Captioning from Quality to Societal Bias and User Preferences",
@@ -775,7 +779,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["IGP, Nanyang Technological University","Nanyang Technological University","Alibaba DAMO Academy","Xi’an Jiaotong University"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2406.09121" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2406.09121" }, { label: "github", href: "https://github.com/niejiahao1998/MMRel" }],
   },
   {
     name: "Understanding Multimodal Hallucination with Parameter-Free Representation Alignment",
@@ -788,7 +792,7 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     correspondingAuthors: [],
     affiliations: ["Wangxuan Institute of Computer Technology, Peking University","Beijing Institute for General Artificial Intelligence","National Key Laboratory of General Artificial Intelligence"],
     metadataNote: "Title, author order, v1 date, and affiliations sourced from arXiv/ar5iv; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.01151" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.01151" }, { label: "github", href: "https://github.com/yellow-binary-tree/Pfram" }],
   },
   ],
 };

@@ -13,7 +13,7 @@ export type OpenHalluMitigationCandidate = {
   correspondingAuthors?: string[];
   affiliations?: string[];
   metadataNote: string;
-  resources: { label: "paper"; href: string }[];
+  resources: { label: "paper" | "github" | "Hugging Face"; href: string }[];
 };
 
 export type OpenHalluMitigationGroup = "Training-time" | "Activation Editing" | "Decoding-time" | "Verification-based" | "Tool-augmented" | "Uncertainty-aware";
@@ -52,8 +52,9 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "NAACL 2024",
     score: "fine-tuning",
     authors: ["Seongyun Lee","Sue Hyun Park","Yongrae Jo"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2311.07362" }],
+    affiliations: ["Korea University","KAIST AI","LG AI Research"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2311.07362" }, { label: "github", href: "https://github.com/kaistAI/Volcano" }],
   },
   {
     name: "HalluciDoctor: Mitigating Hallucinatory Toxicity in Visual Instruction Data",
@@ -66,7 +67,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     affiliations: ["Zhejiang University","Huawei Cloud","Institute of Computing Technology, Chinese Academy of Sciences"],
     correspondingAuthors: ["Longhui Wei"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2311.13614" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2311.13614" }, { label: "github", href: "https://github.com/Yuqifan1117/HalluciDoctor" }],
   },
   {
     name: "Beyond Hallucinations: Enhancing LVLMs through Hallucination-Aware Direct Preference Optimization",
@@ -90,7 +91,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Tianyu Yu","Yuan Yao","Haoye Zhang"],
     affiliations: ["Tsinghua University","National University of Singapore"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2312.00849" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2312.00849" }, { label: "github", href: "https://github.com/RLHF-V/RLHF-V" }],
   },
   {
     name: "ViGoR: Improving Visual Grounding of Large Vision Language Models with Fine-Grained Reward Modeling",
@@ -124,7 +125,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "preference fine-tuning",
     authors: ["Yiyang Zhou","Chenhang Cui","Rafael Rafailov"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2402.11411" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2402.11411" }, { label: "github", href: "https://github.com/YiyangZhou/POVID" }],
   },
   {
     name: "Less is More: Mitigating Multimodal Hallucination from an EOS Decision Perspective",
@@ -159,7 +160,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Yiyang Zhou","Zhiyuan Fan","Dongjie Cheng"],
     affiliations: ["UNC-Chapel Hill","University of Chicago","University of Maryland","Rutgers University","Independent Researcher"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2405.14622" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2405.14622" }, { label: "github", href: "https://github.com/YiyangZhou/CSR" }],
   },
   {
     name: "Reflective Instruction Tuning: Mitigating Hallucinations in Large Vision-Language Models",
@@ -170,7 +171,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "instruction tuning",
     authors: ["Jinrui Zhang","Teng Wang","Haigang Zhang"],
     correspondingAuthors: ["Feng Zheng"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["Southern University of Science and Technology","The University of Hong Kong","Shenzhen Polytechnic University","The Cloud Computing and IT Institute of ZTE Corporation","Research Institute of Multiple Agents and Embodied Intelligence, Peng Cheng Laboratory, Shenzhen, China"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.11422" }],
   },
   {
@@ -183,7 +185,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Yufang Liu","Tao Ji","Changzhi Sun"],
     affiliations: ["School of Computer Science and Technology, East China Normal University","School of Computer Science, Fudan University","Pazhou Laboratory, Huangpu"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.03176" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.03176" }, { label: "github", href: "https://github.com/Yufang-Liu/clip_hallucination" }],
   },
   {
     name: "V-DPO: Mitigating Hallucination in Large Vision Language Models via Vision-Guided Direct Preference Optimization",
@@ -195,7 +197,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Yuxi Xie","Guanzhen Li","Xiao Xu"],
     affiliations: ["National University of Singapore"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2411.02712" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2411.02712" }, { label: "github", href: "https://github.com/YuxiXie/V-DPO" }],
   },
   {
     name: "Hallucination-resistant multimodal content generation through knowledge graph-based reinforcement learning",
@@ -250,7 +252,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "fine-tuning",
     authors: ["Zhuosheng Zhang","Aston Zhang","Mu Li"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2302.00923" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2302.00923" }, { label: "github", href: "https://github.com/amazon-science/mm-cot" }],
   },
   {
     name: "Hallucination Augmented Contrastive Learning for Multimodal Large Language Model",
@@ -262,7 +264,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Chaoya Jiang","Haiyang Xu","Mengfan Dong"],
     affiliations: ["National Engineering Research Center for Software Engineering, Peking University","Alibaba Group"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2312.06968" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2312.06968" }, { label: "github", href: "https://github.com/X-PLUG/mPLUG-HalOwl" }],
   },
   {
     name: "KAM-CoT: Knowledge Augmented Multimodal Chain-of-Thoughts Reasoning",
@@ -297,7 +299,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Lei Wang","Jiabang He","Shenshen Li"],
     affiliations: ["Singapore Management University, Beijing Forestry University","University of Electronic Science and Technology of China"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2312.01701" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2312.01701" }, { label: "github", href: "https://github.com/Anonymousanoy/FOHE" }],
   },
   {
     name: "Detecting and Mitigating Hallucination in Large Vision Language Models via Fine-Grained AI Feedback",
@@ -307,7 +309,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "arXiv 2024",
     score: "preference optimization",
     authors: ["Wenyi Xiao","Ziwei Huang","Leilei Gan"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["Zhejiang University","Alibaba Group","Fudan University"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2404.14233" }],
   },
   {
@@ -390,7 +393,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "arXiv 2024",
     score: "fine-tuning",
     authors: ["Rui Hu","Yahan Tu","Shuyu Wei"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["Beijing Key Lab of Traffic Data Analysis and Mining","Beijing Jiaotong University, China"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2404.10332" }],
   },
   {
@@ -401,8 +405,9 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "arXiv 2024",
     score: "regularization training",
     authors: ["Qian Cao","Xu Chen","Ruihua Song"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.16809" }],
+    affiliations: ["Gaoling School of Artificial Intelligence, Renmin University of China","Tencent AI Lab"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.16809" }, { label: "github", href: "https://github.com/Aman-4-Real/See-or-Guess" }],
   },
   {
     name: "Mitigating Hallucination in Multimodal Large Language Model via Hallucination-targeted Direct Preference Optimization",
@@ -461,7 +466,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Xiaoye Qu","Mingyang Song","Wei Wei"],
     correspondingAuthors: ["Wei Wei"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.00550" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.00550" }, { label: "github", href: "https://github.com/ssmisya/MHR" }],
   },
   {
     name: "Modality-Fair Preference Optimization for Trustworthy MLLM Alignment",
@@ -471,7 +476,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "arXiv 2024",
     score: "preference optimization",
     authors: ["Songtao Jiang","Yan Zhang","Ruizhe Chen"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["Zhejiang University","National University of Singapore"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.15334" }],
   },
   {
@@ -496,7 +502,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Shuo Xing","Peiran Li","Yuping Wang"],
     affiliations: ["Texas A&M University","University of Michigan","UIUC","UNC Chapel Hill"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2502.13146" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2502.13146" }, { label: "github", href: "https://github.com/taco-group/Re-Align" }],
   },
   {
     name: "Symmetrical Visual Contrastive Optimization: Aligning Vision-Language Models with Minimal Contrastive Images",
@@ -520,7 +526,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Liqiang Jing","Xinya Du"],
     affiliations: ["The University of Texas at Dallas"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2404.05046" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2404.05046" }, { label: "github", href: "https://github.com/du-nlp-lab/FGAIF" }],
   },
   {
     name: "TextSquare: Scaling up Text-Centric Visual Instruction Tuning",
@@ -568,7 +574,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Fan Yuan","Chi Qin","Xiaogang Xu"],
     affiliations: ["College of Artificial Intelligence","Nanjing University of Aeronautics and Astronautics, Nanjing, China","MIIT Key Laboratory of Pattern Analysis and Machine Intelligence, Nanjing, China","The Chinese University of Hong Kong, Hong Kong, China"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.20429" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.20429" }, { label: "github", href: "https://github.com/F-Yuan303/HELPD" }],
   },
   {
     name: "Mitigating Hallucinations in Large Vision-Language Models via Entity-Centric Multimodal Preference Optimization",
@@ -580,7 +586,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Jiulong Wu","Zhengliang Shi","Shuaiqiang Wang"],
     affiliations: ["Soochow University, Suzhou, China","Baidu Inc., Beijing, China","Shandong University, Qingdao, China"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2506.04039" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2506.04039" }, { label: "github", href: "https://github.com/RobitsG/EMPO" }],
   },
   {
     name: "Fact :Teaching MLLMs with Faithful, Concise and Transferable Rationales",
@@ -590,7 +596,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "arXiv 2024",
     score: "rationale training",
     authors: ["Minghe Gao","Shuang Chen","Liang Pang"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["Zhejiang University","Chinese Academy of Sciences","National University of Singapore","Sun Yat-sen University"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2404.11129" }],
   },
   {
@@ -603,7 +610,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Tahsina Hashem","Weiqing Wang","Derry Tanti Wijaya"],
     affiliations: ["Department of Data Science & AI, Monash University, Australia","Department of Data Science, Monash University, Indonesia","Department of CSE, Bangladesh University of Engineering and Technology, Bangladesh"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.03961" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.03961" }, { label: "github", href: "https://github.com/TahsinaHashem/FaithD2T" }],
   },
   {
     name: "Fine-Grained Verifiers: Preference Modeling as Next-token Prediction in Vision-Language Alignment",
@@ -639,7 +646,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "self-evolution learning",
     authors: ["Wentao Tan","Qiong Cao","Yibing Zhan"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2412.15650" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2412.15650" }, { label: "github", href: "https://github.com/WentaoTan/SENA" }],
   },
   {
     name: "CHiP: Cross-modal Hierarchical Direct Preference Optimization for Multimodal LLMs",
@@ -651,7 +658,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Jinlan Fu","Shenzhen Huangfu","Hao Fei"],
     affiliations: ["National University of Singapore","Fudan University","Digital Twin Institute, Eastern Institute of Technology, Ningbo"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2501.16629" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2501.16629" }, { label: "github", href: "https://github.com/LVUGAI/CHiP" }],
   },
   {
     name: "PerturboLLaVA: Reducing Multimodal Hallucinations with Perturbative Visual Training",
@@ -698,7 +705,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "arXiv 2025",
     score: "preference learning",
     authors: ["Shujun Liu","Siyuan Wang","Zejun Li"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["Fudan University","University of Southern California","ByteDance"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2505.15963" }],
   },
   {
@@ -780,7 +788,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "object-aware dpo",
     authors: ["Alberto Compagnoni","Davide Caffagni","Nicholas Moratelli"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2508.20181" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2508.20181" }, { label: "github", href: "https://github.com/aimagelab/CHAIR-DPO" }],
   },
   {
     name: "Two Causes, Not One: Rethinking Omission and Fabrication Hallucinations in MLLMs",
@@ -828,7 +836,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Qidong Huang","Xiaoyi Dong","Pan Zhang"],
     affiliations: ["University of Science and Technology of China","Shanghai AI Laboratory"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2311.17911" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2311.17911" }, { label: "github", href: "https://github.com/shikiw/OPERA" }],
   },
   {
     name: "Mitigating Object Hallucinations in Large Vision-Language Models with Assembly of Global and Local Attention",
@@ -840,7 +848,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Wenbin An","Feng Tian","Sicong Leng"],
     affiliations: ["Guang Dai","Xi’an Jiaotong University","Nanyang Technological University","Lenovo Research","SGIT AI Lab","University of Massachusetts Boston"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2406.12718" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2406.12718" }, { label: "github", href: "https://github.com/Lackel/AGLA" }],
   },
   {
     name: "Paying More Attention to Image: A Training-Free Method for Alleviating Hallucination in LVLMs",
@@ -850,7 +858,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "ECCV 2024",
     score: "attention amplification",
     authors: ["Shi Liu","Kecheng Zheng","Wei Chen"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["State Key Lab of CAD&CG, Zhejiang University"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.21771" }],
   },
   {
@@ -875,7 +884,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Guanyu Zhou","Yibo Yan","Xin Zou"],
     affiliations: ["The Hong Kong University of Science and Technology (Guangzhou)","The Hong Kong University of Science and Technology","Tsinghua University"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.04780" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.04780" }, { label: "github", href: "https://github.com/The-Martyr/CausalMM" }],
   },
   {
     name: "Mitigating Object Hallucination via Concentric Causal Attention",
@@ -899,7 +908,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Le Yang","Ziwei Zheng","Boxu Chen"],
     affiliations: ["Xi’an Jiaotong University","Xi’an, 710049, China"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2412.13817" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2412.13817" }, { label: "github", href: "https://github.com/Ziwei-Zheng/Nullu" }],
   },
   {
     name: "VASparse: Towards Efficient Visual Hallucination Mitigation via Visual-Aware Token Sparsification",
@@ -911,7 +920,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Xianwei Zhuang","Zhihong Zhu","Yuxin Xie"],
     affiliations: ["SECE of Peking University"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2501.06553" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2501.06553" }, { label: "github", href: "https://github.com/mengchuang123/VASparse-github" }],
   },
   {
     name: "Mitigating Hallucinations in Large Vision-Language Models by Adaptively Constraining Information Flow",
@@ -934,7 +943,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Hao Yin","Guangzong Si","Zilei Wang"],
     affiliations: ["University of Science and Technology of China"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2503.13107" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2503.13107" }, { label: "github", href: "https://github.com/ustc-hyin/ClearSight" }],
   },
   {
     name: "MCA-LLaVA: Manhattan Causal Attention for Reducing Hallucination in Large Vision-Language Models",
@@ -944,8 +953,9 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "ACMMM 2025",
     score: "manhattan causal replacement",
     authors: ["Qiyan Zhao","Xiaofeng Zhang","Yiheng Li"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2507.09184" }],
+    affiliations: ["FKLPRIU, Xiamen University of Technology, China","Shanghai Jiao Tong University, China","Nanyang Technological University, Singapore","Jilin University, China","Monash University, Australia","Zhejiang University, China","Huizhou University, China","Chinese Academy of Sciences, China"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2507.09184" }, { label: "github", href: "https://github.com/ErikZ719/MCA-LLaVA" }],
   },
   {
     name: "Diving into Mitigating Hallucinations from a Vision Perspective for Large Vision-Language Models",
@@ -957,7 +967,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Weihang Wang","Xinhao Li","Ziyue Wang"],
     affiliations: ["Bilibili","UESTC","University of Virginia"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2509.13836" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2509.13836" }, { label: "github", href: "https://github.com/whwangovo/VisionWeaver" }],
   },
   {
     name: "Scalpel: Fine-Grained Alignment of Attention Activation Manifolds via Mixture Gaussian Bridges to Mitigate Multimodal Hallucination",
@@ -1132,7 +1142,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Eunkyu Park","Minyeong Kim","Gunhee Kim"],
     affiliations: ["Seoul National University"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2506.10286" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2506.10286" }, { label: "github", href: "https://github.com/dbsltm/cvpr25_halloc" }],
   },
   {
     name: "Interpreting and Editing Vision-Language Representations to Mitigate Hallucinations",
@@ -1202,7 +1212,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "focal contrastive decoding",
     authors: ["Zhaorun Chen","Zhuokai Zhao","Hongyin Luo"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2403.00425" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2403.00425" }, { label: "github", href: "https://github.com/BillChan226/HALC" }],
   },
   {
     name: "Multi-Modal Hallucination Control by Visual Information Grounding",
@@ -1238,7 +1248,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Weihong Zhong","Xiaocheng Feng","Liang Zhao"],
     affiliations: ["Harbin Institute of Technology","Peng Cheng Laboratory"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.00569" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2407.00569" }, { label: "github", href: "https://github.com/whongzhong/MMHalSnowball" }],
   },
   {
     name: "ConVis: Contrastive Decoding with Hallucination Visualization for Mitigating Hallucinations in Multimodal Large Language Models",
@@ -1249,7 +1259,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "visualized contrastive decoding",
     authors: ["Yeji Park","Deokyeong Lee","Junsuk Choe"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.13906" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.13906" }, { label: "github", href: "https://github.com/yejipark-m/ConVis" }],
   },
   {
     name: "Self-Correcting Decoding with Generative Feedback for Mitigating Hallucinations in Large Vision-Language Models",
@@ -1261,7 +1271,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Ce Zhang","Zifu Wan","Zhehan Kan"],
     affiliations: ["School of Computer Science, Carnegie Mellon University"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2502.06130" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2502.06130" }, { label: "github", href: "https://github.com/zhangce01/DeGF" }],
   },
   {
     name: "Octopus: Alleviating Hallucination via Dynamic Contrastive Decoding",
@@ -1274,7 +1284,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     affiliations: ["School of Computer Science and Ningbo Institute, Northwestern Polytechnical University,China.","School of Cybersecurity, Northwestern Polytechnical University, China.","Computer Science, Swansea University."],
     correspondingAuthors: ["Yanning Zhang"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2503.00361" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2503.00361" }, { label: "github", href: "https://github.com/LijunZhang01/Octopus" }],
   },
   {
     name: "Mixture of Decoding: An Attention-Inspired Adaptive Decoding Strategy to Mitigate Hallucinations in Large Vision-Language Models",
@@ -1286,7 +1296,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Xinlong Chen","Yuanxing Zhang","Qiang Liu"],
     affiliations: ["New Laboratory of Pattern Recognition (NLPR)","Institute of Automation, Chinese Academy of Sciences (CASIA)","School of Artificial Intelligence, University of Chinese Academy of Sciences","Kuaishou Technology","Nanjing University"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2505.17061" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2505.17061" }, { label: "github", href: "https://github.com/xlchen0205/MoD" }],
   },
   {
     name: "Med-VCD: Mitigating hallucination for medical large vision language models through visual contrastive decoding",
@@ -1331,7 +1341,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "temporal contrastive decoding",
     authors: ["Jiacheng Zhang","Yang Jiao","Shaoxiang Chen"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.16597" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.16597" }, { label: "github", href: "https://github.com/Stevetich/EventHallusion" }],
   },
   {
     name: "Seeing is Believing: Mitigating Hallucination in Large Vision-Language Models via CLIP-Guided Decoding",
@@ -1341,7 +1351,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "arXiv 2024",
     score: "external guided decoding",
     authors: ["Ailin Deng","Zhirui Chen","Bryan Hooi"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["School of Computing, National University of Singapore","Department of Industrial Systems Engineering and Management, National University of Singapore"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2402.15300" }],
   },
   {
@@ -1353,7 +1364,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "re-balancing contrastive decoding",
     authors: ["Xiaoyu Liang","Jiayuan Yu","Lianrui Mu"],
     correspondingAuthors: ["Haoji Hu"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["College of Information Science and Electronic Engineering, Zhejiang University, China"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.06485" }],
   },
   {
@@ -1377,7 +1389,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Bohan Zhai","Shijia Yang","Chenfeng Xu"],
     affiliations: ["ByteDance Inc.","Stanford University","UC Berkeley","UIUC"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2310.01779" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2310.01779" }, { label: "github", href: "https://github.com/bronyayang/HallE_Switch" }],
   },
   {
     name: "Sycophancy in Vision-Language Models: A Systematic Analysis and an Inference-Time Mitigation Framework",
@@ -1412,7 +1424,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Jihoon Lee","Min Song"],
     affiliations: ["Yonsei University","Onoma AI"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2505.20569" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2505.20569" }, { label: "github", href: "https://github.com/JiHoonLee9898/RVCD" }],
   },
   {
     name: "CoFi-Dec: Hallucination-Resistant Decoding via Coarse-to-Fine Generative Feedback in Large Vision-Language Models",
@@ -1423,7 +1435,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "coarse-to-fine feedback decoding",
     authors: ["Zongsheng Cao","Yangfan He","Anran Liu"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2512.23453" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2512.23453" }, { label: "github", href: "https://github.com/AI-Researcher-Team/CoFi-Dec" }],
   },
   ],
   "Verification-based": [
@@ -1437,7 +1449,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Yiyang Zhou","Chenhang Cui","Jaehong Yoon"],
     affiliations: ["UNC-Chapel Hill","Rutgers University","Columbia University","Stanford University"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2310.00754" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2310.00754" }, { label: "github", href: "https://github.com/YiyangZhou/LURE" }],
   },
   {
     name: "Woodpecker: Hallucination Correction for Multimodal Large Language Models",
@@ -1449,7 +1461,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Shukang Yin","Chaoyou Fu","Sirui Zhao"],
     affiliations: ["School of Data Science, USTC & State Key Laboratory of Cognitive Intelligence","Tencent YouTu Lab"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2310.16045" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2310.16045" }, { label: "github", href: "https://github.com/BradyFU/Woodpecker" }],
   },
   {
     name: "Visual Fact Checker: Enabling High-Fidelity Detailed Caption Generation",
@@ -1506,7 +1518,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Junfei Wu","Qiang Liu","Ding Wang"],
     affiliations: ["Center for Research on Intelligent Perception and Computing","State Key Laboratory of Multimodal Artificial Intelligence Systems","Institute of Automation, Chinese Academy of Sciences","School of Artificial Intelligence, University of Chinese Academy of Sciences","Nanjing University"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2402.11622" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2402.11622" }, { label: "github", href: "https://github.com/Hyperwjf/LogicCheckGPT" }],
   },
   {
     name: "Combating Multimodal LLM Hallucination via Bottom-Up Holistic Reasoning",
@@ -1539,7 +1551,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "multi-step retrospective prompting",
     authors: ["Dingchen Yang","Bowen Cao","Guang Chen"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2403.14401" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2403.14401" }, { label: "github", href: "https://github.com/DingchenYang99/Pensieve" }],
   },
   {
     name: "Mitigating Hallucinations in Multimodal Spatial Relations through Constraint-Aware Prompting",
@@ -1551,7 +1563,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Jiarui Wu","Zhuo Liu","Hangfeng He"],
     affiliations: ["University of Rochester"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2502.08317" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2502.08317" }, { label: "github", href: "https://github.com/jwu114/CAP" }],
   },
   {
     name: "RITUAL: Random Image Transformations as a Universal Anti-hallucination Lever in Large Vision Language Models",
@@ -1598,7 +1610,8 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "TOMM 2025",
     score: "dynamic rag supplement",
     authors: ["Xiaoye Qu","Qiyuan Chen","Wei Wei"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
+    affiliations: ["Huazhong University of Science and Technology","Zhejiang University","Xiamen University","Zhejiang Gongshang University"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.00555" }],
   },
   {
@@ -1609,8 +1622,9 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     venue: "TMLR 2024",
     score: "external discriminator system",
     authors: ["Yue Chang","Liqiang Jing","Xiaopeng Zhang"],
-    metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.16494" }],
+    affiliations: ["The University of Texas at Dallas"],
+    metadataNote: "Author names and v1 date sourced from arXiv; affiliations and explicit corresponding-author marks sourced from the ar5iv-rendered paper author block.",
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2409.16494" }, { label: "github", href: "https://github.com/CYandYue/Dentist" }],
   },
   {
     name: "Mitigating Object Hallucinations via Sentence-Level Early Intervention",
@@ -1622,7 +1636,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Shangpin Peng","Senqiao Yang","Li Jiang"],
     affiliations: ["Harbin Institute of Technology, Shenzhen","The Chinese University of Hong Kong","The Chinese University of Hong Kong, Shenzhen"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2507.12455" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2507.12455" }, { label: "github", href: "https://github.com/pspdada/SENTINEL" }],
   },
   {
     name: "Exploring the Transferability of Visual Prompting for Multimodal Large Language Models",
@@ -1634,7 +1648,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Yichi Zhang","Yinpeng Dong","Siyuan Zhang"],
     affiliations: ["Dept. of Comp. Sci. and Tech., Institute for AI, Tsinghua-Bosch Joint ML Center","THBI Lab, BNRist Center, Tsinghua University, Beijing 100084, China","RealAI","Pazhou Laboratory (Huangpu), Guangzhou, Guangdong"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2404.11207" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2404.11207" }, { label: "github", href: "https://github.com/zycheiheihei/Transferable-Visual-Prompting" }],
   },
   {
     name: "What if...?: Thinking Counterfactual Keywords Helps to Mitigate Hallucination in Large Multi-modal Models",
@@ -1658,7 +1672,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "external visual guidance",
     authors: ["Qirui Jiao","Daoyuan Chen","Yilun Huang"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from OpenAlex and require PDF verification together with corresponding-author status before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2401.17981" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2401.17981" }, { label: "github", href: "https://github.com/Qirui-jiao/mllm_detection" }],
   },
   {
     name: "Visual Description Grounding Reduces Hallucinations and Boosts Reasoning in LVLMs",
@@ -1694,7 +1708,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Xiaoye Qu","Jiashuo Sun","Wei Wei"],
     affiliations: ["Huazhong University of Science and Technology","Xiamen University","The Chinese University of Hong Kong"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.17150" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.17150" }, { label: "github", href: "https://github.com/GasolSun36/MVP" }],
   },
   {
     name: "Look Twice Before You Answer: Memory-Space Visual Retracing for Hallucination Mitigation in Multimodal Large Language Models",
@@ -1706,7 +1720,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Xin Zou","Yizhou Wang","Yibo Yan"],
     affiliations: ["The Hong Kong University of Science and Technology (Guangzhou)","The Hong Kong University of Science and Technology","China University of Geosciences","University of Technology Sydney"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.03577" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2410.03577" }, { label: "github", href: "https://github.com/1zhou-Wang/MemVR" }],
   },
   {
     name: "Scaling Inference-Time Search with Vision Value Model for Improved Visual Comprehension",
@@ -1718,7 +1732,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     authors: ["Xiyao Wang","Zhengyuan Yang","Linjie Li"],
     affiliations: ["University of Maryland, College Park","Microsoft"],
     metadataNote: "Author names and v1 date sourced from arXiv; affiliations sourced from the ar5iv-rendered paper author block; corresponding-author status was not explicitly identified.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2412.03704" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2412.03704" }, { label: "github", href: "https://github.com/si0wang/VisVM" }],
   },
   {
     name: "Black-Box Visual Prompt Engineering for Mitigating Object Hallucination in Large Vision Language Models",
@@ -1775,7 +1789,7 @@ export const openhalluMitigationByGroup: Record<OpenHalluMitigationGroup, OpenHa
     score: "self-introspective decoding",
     authors: ["Fushuo Huo","Wenchao Xu","Zhong Zhang"],
     metadataNote: "Author names and v1 date sourced from arXiv; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.02032" }],
+    resources: [{ label: "paper", href: "https://arxiv.org/abs/2408.02032" }, { label: "github", href: "https://github.com/huofushuo/SID" }],
   },
   ],
 };
