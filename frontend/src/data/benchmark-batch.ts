@@ -52,9 +52,10 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     venue: "ACL 2026",
     score: "5,000+ / Acc / Hallucination Rate",
     authors: ["Feiyu Zhao","Yiming Chen","Wenhuan Lu"],
-    correspondingAuthors: [],
-    metadataNote: "Exact title and first three authors sourced from ACL Anthology official paper record; corresponding-author and affiliation metadata require PDF verification before merge.",
-    resources: [{ label: "paper", href: "https://aclanthology.org/2026.acl-long.1797/" }],
+    correspondingAuthors: ["Xianghu Yue"],
+    affiliations: ["College of Intelligence and Computing, Tianjin University, China","ASUS Intelligent Cloud Services, Singapore"],
+    metadataNote: "Title, author order, affiliations, corresponding-author mark, and official project link sourced from the ACL Anthology PDF first page.",
+    resources: [{ label: "paper", href: "https://aclanthology.org/2026.acl-long.1797/" }, { label: "github", href: "https://github.com/Feiyuzhao25/halluaudio" }],
   },
   {
     name: "Detecting and Evaluating Medical Hallucinations in Large Vision Language Models",
