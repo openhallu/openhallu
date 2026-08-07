@@ -275,8 +275,9 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     venue: "ACL 2024",
     score: "1,860 / Acc/P/R/F",
     authors: ["Xiang Chen","Chenxi Wang","Yida Xue"],
-    correspondingAuthors: [],
-    metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
+    correspondingAuthors: ["Huajun Chen"],
+    affiliations: ["College of Computer Science and Technology, Zhejiang University","School of Software Technology, Zhejiang University","Zhejiang University-Ant Group Joint Laboratory of Knowledge Graph","Ant Group"],
+    metadataNote: "Author names, affiliations, v1 date, and explicit corresponding-author marks sourced from the paper PDF first page.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2402.03190" }],
   },
   {
@@ -526,7 +527,8 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     score: "1,200 / Acc",
     authors: ["Wen Huang","Hongbin Liu","Minxin Guo"],
     correspondingAuthors: [],
-    metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
+    affiliations: ["University of Science & Technology of China","Duke University","The University of Hong Kong"],
+    metadataNote: "Author names, affiliations, and v1 date sourced from the paper PDF first page; corresponding-author status was not explicitly identified.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2402.14683" }, { label: "github", href: "https://github.com/wenhuang2000/VHTest" }],
   },
   {
@@ -563,8 +565,9 @@ export const openhalluBenchmarksByType: Record<string, OpenHalluBenchmarkObject[
     venue: "ICML 2024",
     score: "8,030 / Acc/P/R/F1",
     authors: ["Mingrui Wu","Jiayi Ji","Oucheng Huang"],
-    correspondingAuthors: [],
-    metadataNote: "Title, author order, and v1 date sourced from arXiv; affiliation and corresponding-author metadata require PDF verification before merge.",
+    correspondingAuthors: ["Jiayi Ji"],
+    affiliations: ["Key Laboratory of Multimedia Trusted Perception and Efficient Computing, Ministry of Education of China, Xiamen University, 361005, P.R. China"],
+    metadataNote: "Author names, affiliations, v1 date, and explicit corresponding-author marks sourced from the paper PDF first page.",
     resources: [{ label: "paper", href: "https://arxiv.org/abs/2406.16449" }],
   },
   {
