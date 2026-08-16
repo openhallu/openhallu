@@ -1,3 +1,14 @@
+import {
+  openhalluMitigationArxivReleaseDates,
+  openhalluMitigationCandidates150,
+  openhalluMitigationPapers150,
+} from "./mitigation-batch";
+import {
+  openhalluBenchmarkArxivReleaseDates,
+  openhalluBenchmarkPapers60,
+  openhalluBenchmarks60,
+} from "./benchmark-batch";
+
 export type ModuleCard = {
   name: string;
   href: string;
@@ -85,6 +96,8 @@ export const arxivReleaseDates: Record<string, string> = {
   "2605.12258": "May 12, 2026",
   "2605.25377": "May 25, 2026",
   "2606.03937": "Jun 2, 2026",
+  ...openhalluMitigationArxivReleaseDates,
+  ...openhalluBenchmarkArxivReleaseDates,
   "2308.06394": "Aug 11, 2023",
   "2402.03190": "Feb 5, 2024",
   "2402.11622": "Feb 18, 2024",
@@ -1220,6 +1233,7 @@ export const subpageConfigs = {
           { label: "github", href: "https://github.com/junyangwang0410/AMBER" },
         ],
       },
+      ...openhalluBenchmarks60,
     ] satisfies SubpageTableRow[],
     aboutTitle: "About This Collection",
     aboutBody:
@@ -1597,55 +1611,7 @@ export const subpageConfigs = {
           { label: "github", href: "https://github.com/mlrm-LEAD/mlrm-LEAD" },
         ],
       },
-      {
-        name: "Analyzing and Mitigating Object Hallucination in Large Vision-Language Models",
-        note: "LURE rectifies object hallucinations by revising LVLM descriptions using co-occurrence, uncertainty, and object-position signals.",
-        type: "Fine-tuning",
-        tags: ["post-hoc revision", "object uncertainty", "co-occurrence"],
-        venue: "ICLR 2024",
-        score: "hallucination revision",
-        authors: ["Yiyang Zhou", "Chenhang Cui", "Jaehong Yoon"],
-        correspondingAuthors: [],
-        affiliations: ["University of North Carolina at Chapel Hill"],
-        resources: [
-          { label: "paper", href: "https://arxiv.org/abs/2310.00754" },
-          { label: "github", href: "https://github.com/YiyangZhou/LURE" },
-        ],
-      },
-      {
-        name: "Interpreting and Editing Vision-Language Representations to Mitigate Hallucinations",
-        note: "A representation-editing approach that removes hallucinated object features from VLM image representations.",
-        type: "Activation Editing",
-        tags: ["representation editing", "knowledge erasure", "object hallucination"],
-        venue: "ICLR 2025",
-        score: "latent representation editing",
-        authors: ["Nick Jiang", "Anish Kachinthaya", "Suzie Petryk"],
-        correspondingAuthors: [],
-        affiliations: ["University of California, Berkeley"],
-        resources: [
-          { label: "paper", href: "https://arxiv.org/abs/2410.02762" },
-          { label: "github", href: "https://github.com/nickjiang2378/vl-interp" },
-        ],
-      },
-      {
-        name: "Devils in Middle Layers of Large Vision-Language Models: Interpreting, Detecting and Mitigating Object Hallucinations via Attention Lens",
-        note: "An attention-lens analysis identifies middle-layer signals for object hallucination detection and visual-attention adjustment.",
-        type: "Decoding-time",
-        tags: ["attention lens", "middle layers", "object hallucination"],
-        venue: "CVPR 2025",
-        score: "attention-based signals",
-        authors: ["Zhangqi Jiang", "Junkai Chen", "Beier Zhu"],
-        correspondingAuthors: ["Tingjin Luo", "Xu Yang"],
-        affiliations: [
-          "National University of Defense Technology",
-          "Southeast University",
-          "Nanyang Technological University",
-        ],
-        resources: [
-          { label: "paper", href: "https://arxiv.org/abs/2411.16724" },
-          { label: "github", href: "https://github.com/ZhangqiJiang07/middle_layers_indicating_hallucinations" },
-        ],
-      },
+      ...openhalluMitigationCandidates150,
       {
         name: "ZINA: Multimodal Fine-grained Hallucination Detection and Editing",
         note: "ZINA detects hallucinated spans, classifies six error types, and suggests grounded edits for MLLM outputs.",
@@ -1671,37 +1637,6 @@ export const subpageConfigs = {
         resources: [
           { label: "paper", href: "https://arxiv.org/abs/2511.12140" },
           { label: "github", href: "https://github.com/PinxueGuo/VBackChecker" },
-        ],
-      },
-      {
-        name: "Detecting and Mitigating Hallucination in Large Vision Language Models via Fine-Grained AI Feedback",
-        note: "Fine-grained object, attribute, and relationship feedback supports detection and detect-then-rewrite training.",
-        type: "Detection",
-        tags: ["fine-grained feedback", "severity-aware", "detect-then-rewrite"],
-        venue: "AAAI 2025",
-        score: "sentence-level detection",
-        authors: ["Wenyi Xiao", "Ziwei Huang", "Leilei Gan"],
-        correspondingAuthors: ["Leilei Gan"],
-        affiliations: ["Zhejiang University", "Alibaba Group"],
-        resources: [
-          { label: "paper", href: "https://arxiv.org/abs/2404.14233" },
-          { label: "github", href: "https://github.com/Mr-Loevan/HSA-DPO" },
-        ],
-      },
-      {
-        name: "HalLoc: Token-level Localization of Hallucinations for Vision Language Models",
-        note: "A token-level localization dataset and concurrent detector for identifying hallucination spans.",
-        type: "Detection",
-        tags: ["token-level localization", "graded confidence", "hallucination types"],
-        venue: "CVPR 2025",
-        score: "token-level detection",
-        authors: ["Eunkyu Park", "Minyeong Kim", "Gunhee Kim"],
-        correspondingAuthors: ["Gunhee Kim"],
-        affiliations: ["Seoul National University"],
-        resources: [
-          { label: "paper", href: "https://arxiv.org/abs/2506.10286" },
-          { label: "github", href: "https://github.com/dbsltm/cvpr25_halloc" },
-          { label: "Hugging Face", href: "https://huggingface.co/datasets/uunicee/HalLoc" },
         ],
       },
       {
@@ -1798,21 +1733,6 @@ export const subpageConfigs = {
         resources: [
           { label: "paper", href: "https://arxiv.org/abs/2411.11919" },
           { label: "github", href: "https://github.com/Ruiyang-061X/VL-Uncertainty" },
-        ],
-      },
-      {
-        name: "Logical Closed Loop: Uncovering Object Hallucinations in Large Vision-Language Models",
-        note: "LogicCheckGPT probes object-to-attribute and attribute-to-object consistency in a training-free closed loop.",
-        type: "Detection",
-        tags: ["logical consistency", "object hallucination", "closed-loop probing"],
-        venue: "Findings of ACL 2024",
-        score: "logical consistency probing",
-        authors: ["Junfei Wu", "Qiang Liu", "Ding Wang"],
-        correspondingAuthors: ["Shu Wu"],
-        affiliations: ["Institute of Automation, Chinese Academy of Sciences", "University of Chinese Academy of Sciences", "Nanjing University"],
-        resources: [
-          { label: "paper", href: "https://arxiv.org/abs/2402.11622" },
-          { label: "github", href: "https://github.com/Hyperwjf/LogicCheckGPT" },
         ],
       },
       {
@@ -2122,6 +2042,8 @@ export const subpageConfigs = {
           { label: "github", href: "https://github.com/mlrm-LEAD/mlrm-LEAD" },
         ],
       },
+      ...openhalluMitigationPapers150,
+      ...openhalluBenchmarkPapers60,
       {
         name: "GLSim: Detecting Object Hallucinations in LVLMs via Global-Local Similarity",
         note: "A training-free detector that combines global scene similarity with local visual grounding for object hallucination detection.",
@@ -2157,21 +2079,6 @@ export const subpageConfigs = {
         ],
       },
       {
-        name: "Analyzing and Mitigating Object Hallucination in Large Vision-Language Models",
-        note: "LURE rectifies object hallucinations by revising LVLM descriptions using co-occurrence, uncertainty, and object-position signals.",
-        type: "Mitigation",
-        tags: ["post-hoc revision", "object uncertainty", "co-occurrence"],
-        venue: "ICLR 2024",
-        score: "hallucination revision",
-        authors: ["Yiyang Zhou", "Chenhang Cui", "Jaehong Yoon"],
-        correspondingAuthors: [],
-        affiliations: ["University of North Carolina at Chapel Hill"],
-        resources: [
-          { label: "paper", href: "https://arxiv.org/abs/2310.00754" },
-          { label: "github", href: "https://github.com/YiyangZhou/LURE" },
-        ],
-      },
-      {
         name: "Uncertainty Estimation in Autoregressive Structured Prediction",
         note: "A general ensemble-based framework for token-level and sequence-level uncertainty estimation in autoregressive structured prediction.",
         type: "Quantification",
@@ -2182,40 +2089,6 @@ export const subpageConfigs = {
         correspondingAuthors: [],
         affiliations: ["Yandex", "Higher School of Economics", "University of Cambridge"],
         resources: [{ label: "paper", href: "https://arxiv.org/abs/2002.07650" }],
-      },
-      {
-        name: "Interpreting and Editing Vision-Language Representations to Mitigate Hallucinations",
-        note: "A representation-editing approach that removes hallucinated object features from VLM image representations.",
-        type: "Mitigation",
-        tags: ["representation editing", "knowledge erasure", "object hallucination"],
-        venue: "ICLR 2025",
-        score: "latent representation editing",
-        authors: ["Nick Jiang", "Anish Kachinthaya", "Suzie Petryk"],
-        correspondingAuthors: [],
-        affiliations: ["University of California, Berkeley"],
-        resources: [
-          { label: "paper", href: "https://arxiv.org/abs/2410.02762" },
-          { label: "github", href: "https://github.com/nickjiang2378/vl-interp" },
-        ],
-      },
-      {
-        name: "Devils in Middle Layers of Large Vision-Language Models: Interpreting, Detecting and Mitigating Object Hallucinations via Attention Lens",
-        note: "An attention-lens analysis identifies middle-layer signals for object hallucination detection and visual-attention adjustment.",
-        type: "Detection",
-        tags: ["attention lens", "middle layers", "object hallucination"],
-        venue: "CVPR 2025",
-        score: "attention-based signals",
-        authors: ["Zhangqi Jiang", "Junkai Chen", "Beier Zhu"],
-        correspondingAuthors: ["Tingjin Luo", "Xu Yang"],
-        affiliations: [
-          "National University of Defense Technology",
-          "Southeast University",
-          "Nanyang Technological University",
-        ],
-        resources: [
-          { label: "paper", href: "https://arxiv.org/abs/2411.16724" },
-          { label: "github", href: "https://github.com/ZhangqiJiang07/middle_layers_indicating_hallucinations" },
-        ],
       },
       {
         name: "Beyond Token Probes: Hallucination Detection via Activation Tensors with ACT-ViT",
